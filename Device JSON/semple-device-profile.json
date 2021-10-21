@@ -1,0 +1,48 @@
+[
+    {
+        "apiVersion": "v2",
+        "profile": {
+            "name": "Raspberry-pi-fusion",
+            "manufacturer": "Rpi",
+            "model": "4B",
+            "labels": [
+                "rpi-1"
+            ],
+            "description": "Raspberry pi device",
+            "deviceResources": [
+                {
+                    "name": "Camera",
+                    "description": "Counts people within vible area",
+                    "properties": {
+                        "valueType": "Int64",
+                        "readWrite": "RW",
+                        "defaultValue": "On",
+                        "units": ""
+                    }
+                },
+                {
+                    "name": "LDR",
+                    "description": "Measures intensity of life",
+                    "properties": {
+                        "valueType": "Int64",
+                        "readWrite": "RW",
+                        "defaultValue": "On",
+                        "units": ""
+                    }
+                }
+            ],
+            "deviceCommands": [
+                {
+                    "name": "Switch",
+                    "readWrite": "RW",
+                    "resourceOperations": [
+                        {
+                            "deviceResource": "Camera",
+                            "DefaultValue": "false"
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+]

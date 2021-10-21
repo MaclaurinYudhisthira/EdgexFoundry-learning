@@ -1,0 +1,30 @@
+dbtimestamp:
+  created: 1633955846716
+  modified: 1633955846716
+id: e6e95c17-400f-4fc4-aaa0-7e97fc443b6e
+name: Rpi-1
+manufacturer: Raspberry Pi Foundation
+description: Sensor cluster providing metrics for temperature
+model: Raspberry Pi 4B
+labels: [rpi]
+deviceResources:
+- description: Temperature sensors
+  name: temperature
+  isHidden: false
+  tag: ""
+  properties:
+    valueType: Int64
+    readWrite: RW
+    units: ""
+    minimum: ""
+    maximum: ""
+    defaultValue: ""
+    mask: ""
+    shift: ""
+    scale: ""
+    offset: ""
+    base: ""
+    assertion: ""
+    mediaType: ""
+  attributes: {}
+deviceCommands: []

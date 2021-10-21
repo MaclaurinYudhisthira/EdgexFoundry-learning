@@ -1,0 +1,14 @@
+description: Example of Simple Device Profile
+deviceResources:
+  - name: SwitchButton
+    description: Switch On/Off.
+    properties:
+      valueType: String
+      readWrite: RW
+      defaultValue: 'On'
+      units: On/Off
+labels:
+  - modbus
+manufacturer: Simple Corp.
+model: SP-01
+name: Simple-Device-Profile

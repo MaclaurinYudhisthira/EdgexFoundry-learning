@@ -1,0 +1,35 @@
+[
+    {
+        "apiVersion": "v2",
+        "device": {
+            "name": "Camera-LDR-Device-1",
+            "description": "Device created with Raspberry-pi-fusion device profile",
+            "adminState": "UNLOCKED",
+            "operatingState": "UP",
+            "labels": [
+                "device-camera-LDR"
+            ],
+            "serviceName": "device-rest",
+            "profileName": "Raspberry-pi-fusion",
+            "autoEvents": [
+                {
+                    "interval": "30s",
+                    "onChange": false,
+                    "sourceName": "Float32"
+                },
+                {
+                    "interval": "30s",
+                    "onChange": false,
+                    "sourceName": "Float64"
+                }
+            ],
+            "protocols": {
+                "other": {
+                    "Address": "device-virtual-float-01",
+                    "Protocol": "300"
+                }
+            },
+             "location": "Tokyo"
+        }
+    }
+]
