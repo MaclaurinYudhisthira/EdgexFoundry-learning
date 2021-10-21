@@ -1,0 +1,736 @@
+{
+	"info": {
+		"_postman_id": "ed6cdf49-8d51-4fdf-8c28-b215f45e02e6",
+		"name": "EdgeX Foundry 3",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "UI Services",
+			"item": [
+				{
+					"name": "Core-Consul",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{edgex-ip}}:{{edgex-core-consul}}",
+							"protocol": "http",
+							"host": [
+								"{{edgex-ip}}"
+							],
+							"port": "{{edgex-core-consul}}"
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UI Go",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{edgex-ip}}:{{edgex-ui-go}}",
+							"protocol": "http",
+							"host": [
+								"{{edgex-ip}}"
+							],
+							"port": "{{edgex-ui-go}}"
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Core-data",
+			"item": [
+				{
+					"name": "ping",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{edgex-ip}}:{{edgex-core-data}}/api/v2/ping",
+							"protocol": "http",
+							"host": [
+								"{{edgex-ip}}"
+							],
+							"port": "{{edgex-core-data}}",
+							"path": [
+								"api",
+								"v2",
+								"ping"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "version",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{edgex-ip}}:{{edgex-core-data}}/api/v2/version",
+							"protocol": "http",
+							"host": [
+								"{{edgex-ip}}"
+							],
+							"port": "{{edgex-core-data}}",
+							"path": [
+								"api",
+								"v2",
+								"version"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "metrics",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{edgex-ip}}:{{edgex-core-data}}/api/v2/metrics",
+							"protocol": "http",
+							"host": [
+								"{{edgex-ip}}"
+							],
+							"port": "{{edgex-core-data}}",
+							"path": [
+								"api",
+								"v2",
+								"metrics"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "config",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{edgex-ip}}:{{edgex-core-data}}/api/v2/config",
+							"protocol": "http",
+							"host": [
+								"{{edgex-ip}}"
+							],
+							"port": "{{edgex-core-data}}",
+							"path": [
+								"api",
+								"v2",
+								"config"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "event/all",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{edgex-ip}}:{{edgex-core-data}}/api/v2/event/all",
+							"protocol": "http",
+							"host": [
+								"{{edgex-ip}}"
+							],
+							"port": "{{edgex-core-data}}",
+							"path": [
+								"api",
+								"v2",
+								"event",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "event/count",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{edgex-ip}}:{{edgex-core-data}}/api/v2/event/count",
+							"protocol": "http",
+							"host": [
+								"{{edgex-ip}}"
+							],
+							"port": "{{edgex-core-data}}",
+							"path": [
+								"api",
+								"v2",
+								"event",
+								"count"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "reading/all",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{edgex-ip}}:{{edgex-core-data}}/api/v2/reading/all",
+							"protocol": "http",
+							"host": [
+								"{{edgex-ip}}"
+							],
+							"port": "{{edgex-core-data}}",
+							"path": [
+								"api",
+								"v2",
+								"reading",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "reading/device/name/{name}",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{edgex-ip}}:{{edgex-core-data}}/api/v2/reading/device/name/Camera-LDR-Device-1",
+							"protocol": "http",
+							"host": [
+								"{{edgex-ip}}"
+							],
+							"port": "{{edgex-core-data}}",
+							"path": [
+								"api",
+								"v2",
+								"reading",
+								"device",
+								"name",
+								"Camera-LDR-Device-1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "12",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{edgex-ip}}:{{edgex-core-data}}/api/v2/event/Random-Integer-Device/Random-Integer-Device/Random-Integer-Device",
+							"protocol": "http",
+							"host": [
+								"{{edgex-ip}}"
+							],
+							"port": "{{edgex-core-data}}",
+							"path": [
+								"api",
+								"v2",
+								"event",
+								"Random-Integer-Device",
+								"Random-Integer-Device",
+								"Random-Integer-Device"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "# Full API Docs here\nhttps://app.swaggerhub.com/apis/EdgeXFoundry1/core-data/2.0.0\n\n\nD. Kishan"
+		},
+		{
+			"name": "Core-metadata",
+			"item": [
+				{
+					"name": "ping",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{edgex-ip}}:{{edgex-metadata}}/api/v2/ping",
+							"protocol": "http",
+							"host": [
+								"{{edgex-ip}}"
+							],
+							"port": "{{edgex-metadata}}",
+							"path": [
+								"api",
+								"v2",
+								"ping"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "version",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{edgex-ip}}:{{edgex-metadata}}/api/v2/version",
+							"protocol": "http",
+							"host": [
+								"{{edgex-ip}}"
+							],
+							"port": "{{edgex-metadata}}",
+							"path": [
+								"api",
+								"v2",
+								"version"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "metrics",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{edgex-ip}}:{{edgex-metadata}}/api/v2/metrics",
+							"protocol": "http",
+							"host": [
+								"{{edgex-ip}}"
+							],
+							"port": "{{edgex-metadata}}",
+							"path": [
+								"api",
+								"v2",
+								"metrics"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "config",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{edgex-ip}}:{{edgex-metadata}}/api/v2/config",
+							"protocol": "http",
+							"host": [
+								"{{edgex-ip}}"
+							],
+							"port": "{{edgex-metadata}}",
+							"path": [
+								"api",
+								"v2",
+								"config"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create device profile",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n    {\r\n        \"apiVersion\": \"v2\",\r\n        \"profile\": {\r\n            \"name\": \"Raspberry-pi-fusion\",\r\n            \"manufacturer\": \"Rpi\",\r\n            \"model\": \"4B\",\r\n            \"labels\": [\r\n                \"rpi-1\"\r\n            ],\r\n            \"description\": \"Raspberry pi device\",\r\n            \"deviceResources\": [\r\n                {\r\n                    \"name\": \"Camera\",\r\n                    \"description\": \"Counts people within vible area\",\r\n                    \"properties\": {\r\n                        \"valueType\": \"Int64\",\r\n                        \"readWrite\": \"RW\",\r\n                        \"defaultValue\": \"On\",\r\n                        \"units\": \"\"\r\n                    }\r\n                },\r\n                {\r\n                    \"name\": \"LDR\",\r\n                    \"description\": \"Measures intensity of life\",\r\n                    \"properties\": {\r\n                        \"valueType\": \"Int64\",\r\n                        \"readWrite\": \"RW\",\r\n                        \"defaultValue\": \"On\",\r\n                        \"units\": \"\"\r\n                    }\r\n                }\r\n            ]\r\n        }\r\n    }\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{edgex-ip}}:{{edgex-metadata}}/api/v2/deviceprofile",
+							"protocol": "http",
+							"host": [
+								"{{edgex-ip}}"
+							],
+							"port": "{{edgex-metadata}}",
+							"path": [
+								"api",
+								"v2",
+								"deviceprofile"
+							]
+						},
+						"description": "This request should create a device."
+					},
+					"response": []
+				},
+				{
+					"name": "create device profile upload file",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "docker-compose.yml"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://{{edgex-ip}}:{{edgex-metadata}}/api/v2/deviceprofile/uploadfile",
+							"protocol": "http",
+							"host": [
+								"{{edgex-ip}}"
+							],
+							"port": "{{edgex-metadata}}",
+							"path": [
+								"api",
+								"v2",
+								"deviceprofile",
+								"uploadfile"
+							]
+						},
+						"description": "This request should create a device."
+					},
+					"response": []
+				},
+				{
+					"name": "get all device profiles",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{edgex-ip}}:{{edgex-metadata}}/api/v2/deviceprofile/all",
+							"protocol": "http",
+							"host": [
+								"{{edgex-ip}}"
+							],
+							"port": "{{edgex-metadata}}",
+							"path": [
+								"api",
+								"v2",
+								"deviceprofile",
+								"all"
+							]
+						},
+						"description": "This request should create a device."
+					},
+					"response": []
+				},
+				{
+					"name": "create device",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n    {\r\n        \"apiVersion\": \"v2\",\r\n        \"device\": {\r\n            \"name\": \"Camera-LDR-Device-1\",\r\n            \"description\": \"Device created with Raspberry-pi-fusion device profile\",\r\n            \"adminState\": \"UNLOCKED\",\r\n            \"operatingState\": \"UP\",\r\n            \"labels\": [\r\n                \"device-camera-LDR\"\r\n            ],\r\n            \"serviceName\": \"device-rest\",\r\n            \"profileName\": \"Raspberry-pi-fusion\",\r\n            \"autoEvents\": [\r\n                {\r\n                    \"interval\": \"30s\",\r\n                    \"onChange\": false,\r\n                    \"sourceName\": \"Float32\"\r\n                },\r\n                {\r\n                    \"interval\": \"30s\",\r\n                    \"onChange\": false,\r\n                    \"sourceName\": \"Float64\"\r\n                }\r\n            ],\r\n            \"protocols\": {\r\n                \"other\": {\r\n                    \"Address\": \"device-virtual-float-01\",\r\n                    \"Protocol\": \"300\"\r\n                }\r\n            },\r\n             \"location\": \"Tokyo\"\r\n        }\r\n    }\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{edgex-ip}}:{{edgex-metadata}}/api/v2/device",
+							"protocol": "http",
+							"host": [
+								"{{edgex-ip}}"
+							],
+							"port": "{{edgex-metadata}}",
+							"path": [
+								"api",
+								"v2",
+								"device"
+							]
+						},
+						"description": "This request should create a device."
+					},
+					"response": []
+				},
+				{
+					"name": "get all devices",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{edgex-ip}}:{{edgex-metadata}}/api/v2/device/all",
+							"protocol": "http",
+							"host": [
+								"{{edgex-ip}}"
+							],
+							"port": "{{edgex-metadata}}",
+							"path": [
+								"api",
+								"v2",
+								"device",
+								"all"
+							]
+						},
+						"description": "This request should create a device."
+					},
+					"response": []
+				},
+				{
+					"name": "get all device services",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{edgex-ip}}:{{edgex-metadata}}/api/v2/deviceservice/all",
+							"protocol": "http",
+							"host": [
+								"{{edgex-ip}}"
+							],
+							"port": "{{edgex-metadata}}",
+							"path": [
+								"api",
+								"v2",
+								"deviceservice",
+								"all"
+							]
+						},
+						"description": "This request should create a device."
+					},
+					"response": []
+				}
+			],
+			"description": "# Full API Docs here\nhttps://app.swaggerhub.com/apis/EdgeXFoundry1/core-metadata/2.0.0\n\nD. Kishan"
+		},
+		{
+			"name": "Core-command",
+			"item": [
+				{
+					"name": "ping",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{edgex-ip}}:{{edgex-core-command}}/api/v2/ping",
+							"protocol": "http",
+							"host": [
+								"{{edgex-ip}}"
+							],
+							"port": "{{edgex-core-command}}",
+							"path": [
+								"api",
+								"v2",
+								"ping"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "version",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{edgex-ip}}:{{edgex-core-command}}/api/v2/version",
+							"protocol": "http",
+							"host": [
+								"{{edgex-ip}}"
+							],
+							"port": "{{edgex-core-command}}",
+							"path": [
+								"api",
+								"v2",
+								"version"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "metrics",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{edgex-ip}}:{{edgex-core-command}}/api/v2/metrics",
+							"protocol": "http",
+							"host": [
+								"{{edgex-ip}}"
+							],
+							"port": "{{edgex-core-command}}",
+							"path": [
+								"api",
+								"v2",
+								"metrics"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "config",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{edgex-ip}}:{{edgex-core-command}}/api/v2/config",
+							"protocol": "http",
+							"host": [
+								"{{edgex-ip}}"
+							],
+							"port": "{{edgex-core-command}}",
+							"path": [
+								"api",
+								"v2",
+								"config"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list commands",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{edgex-ip}}:{{edgex-core-command}}/api/v2/device/all",
+							"protocol": "http",
+							"host": [
+								"{{edgex-ip}}"
+							],
+							"port": "{{edgex-core-command}}",
+							"path": [
+								"api",
+								"v2",
+								"device",
+								"all"
+							]
+						},
+						"description": "This request should create a device."
+					},
+					"response": []
+				}
+			],
+			"description": "# Full API Docs here\nhttps://app.swaggerhub.com/apis/EdgeXFoundry1/core-metadata/2.0.0\n\nD. Kishan"
+		},
+		{
+			"name": "Device-rest",
+			"item": [
+				{
+					"name": "ping",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{edgex-ip}}:{{edgex-device-rest}}/api/v2/ping",
+							"protocol": "http",
+							"host": [
+								"{{edgex-ip}}"
+							],
+							"port": "{{edgex-device-rest}}",
+							"path": [
+								"api",
+								"v2",
+								"ping"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "send data",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "1111",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{edgex-ip}}:{{edgex-device-rest}}/api/v2/resource/Camera-LDR-Device-1/Camera",
+							"protocol": "http",
+							"host": [
+								"{{edgex-ip}}"
+							],
+							"port": "{{edgex-device-rest}}",
+							"path": [
+								"api",
+								"v2",
+								"resource",
+								"Camera-LDR-Device-1",
+								"Camera"
+							]
+						},
+						"description": "### Url Format\nhttp://{{edgex-ip}}:{{edgex-device-rest}}/api/v2/resource/{{device-name}}/{{resource-name}}\n\n### Resource\nResource === Sensor"
+					},
+					"response": []
+				}
+			],
+			"description": "D. Kishan"
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "edgex-ip",
+			"value": "127.0.0.1"
+		},
+		{
+			"key": "edgex-ui-go",
+			"value": "4000"
+		},
+		{
+			"key": "edgex-core-consul",
+			"value": "8500"
+		},
+		{
+			"key": "edgex-device-rest",
+			"value": "59986"
+		},
+		{
+			"key": "edgex-core-data",
+			"value": "59880"
+		},
+		{
+			"key": "edgex-metadata",
+			"value": "59881"
+		},
+		{
+			"key": "edgex-core-command",
+			"value": "59882"
+		}
+	]
+}
