@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Progress</h1>
+    <h3>12 October 2021</h3>
+    <ul>
+        <li>Arm 64 with ui running fine</li>
+        <li>Device rest service is not working</li>
+        <li>Instead of device rest use device virtual</li>
+        <li>Take help form swagger hub bookmark</li>
+        <li>Test and create requests form swaggerhub docs</li>
+        <li>api/v2/ is almost a must</li>
+    </ul>
+    <h3>13 October 2021</h3>
+    <ul>
+        <li>All api(s) have been tested and are working fine</li>
+        <li>Except device-rest</li>
+        <li>All the testing have been, so far performed for Master branch docker compose (Ireland) </li>
+        <li>No security, Arm 64, with ui</li>
+        <li>Checking if arm version if having problem with device-rest</li>
+    </ul>
+    <h2>Semple Device Profile</h2>
+    <textarea name="" id="" cols="100" rows="30" disabled>
+[
+    {
+        "apiVersion": "v2",
+        "profile": {
+            "name": "Raspberry-pi-fusion",
+            "manufacturer": "Rpi",
+            "model": "4B",
+            "labels": [
+                "rpi-1"
+            ],
+            "description": "Raspberry pi device",
+            "deviceResources": [
+                {
+                    "name": "Camera",
+                    "description": "Counts people within vible area",
+                    "properties": {
+                        "valueType": "Int64",
+                        "readWrite": "RW",
+                        "defaultValue": "On",
+                        "units": ""
+                    }
+                },
+                {
+                    "name": "LDR",
+                    "description": "Measures intensity of life",
+                    "properties": {
+                        "valueType": "Int64",
+                        "readWrite": "RW",
+                        "defaultValue": "On",
+                        "units": ""
+                    }
+                }
+            ],
+            "deviceCommands": [
+                {
+                    "name": "Switch",
+                    "readWrite": "RW",
+                    "resourceOperations": [
+                        {
+                            "deviceResource": "Camera",
+                            "DefaultValue": "false"
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+]
+    </textarea>
+    <h2>Semple Device </h2>
+    <textarea name="" id="" cols="100" rows="30" disabled>
+    [
+        {
+            "apiVersion": "v2",
+            "device": {
+                "name": "Camera-LDR-Device-1",
+                "description": "Device created with Raspberry-pi-fusion device profile",
+                "adminState": "UNLOCKED",
+                "operatingState": "UP",
+                "labels": [
+                    "device-camera-LDR"
+                ],
+                "serviceName": "device-rest",
+                "profileName": "Raspberry-pi-fusion",
+                "autoEvents": [
+                    {
+                        "interval": "30s",
+                        "onChange": false,
+                        "sourceName": "Float32"
+                    },
+                    {
+                        "interval": "30s",
+                        "onChange": false,
+                        "sourceName": "Float64"
+                    }
+                ],
+                "protocols": {
+                    "other": {
+                        "Address": "device-virtual-float-01",
+                        "Protocol": "300"
+                    }
+                },
+                 "location": "Tokyo"
+            }
+        }
+    ]
+    </textarea>
+    <h3>14 October 2021</h3>
+    <ul>
+        <li>Installed Docker on Rpi</li>
+        <li>Wifi issue resolved</li>
+        <li>Docker compose installed successfully</li>
+        <li>Tried Snap Edgex snap is not available</li>
+    </ul>
+    <h3>18 October 2021</h3>
+    <ul>
+        <li>Edgex Main branch is tested not working on edgex</li>
+        <li>Testing for geneva branch</li>
+        <li>Nothing wroked on Raspbian trying ubuntu</li>
+        <li>Rpi is heating and hangging with Ubuntu </li>
+    </ul>
+</body>
+
+</html>
