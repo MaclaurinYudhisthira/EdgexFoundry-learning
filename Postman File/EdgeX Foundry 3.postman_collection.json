@@ -201,7 +201,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://{{edgex-ip}}:{{edgex-core-data}}/api/v2/reading/device/name/Camera-LDR-Device-1",
+							"raw": "http://{{edgex-ip}}:{{edgex-core-data}}/api/v2/reading/device/name/Camera-Device-1",
 							"protocol": "http",
 							"host": [
 								"{{edgex-ip}}"
@@ -213,7 +213,7 @@
 								"reading",
 								"device",
 								"name",
-								"Camera-LDR-Device-1"
+								"Camera-Device-1"
 							]
 						}
 					},
@@ -661,7 +661,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://{{edgex-ip}}:{{edgex-device-rest}}/api/v2/resource/Camera-LDR-Device-1/Camera",
+							"raw": "http://{{edgex-ip}}:{{edgex-device-rest}}/api/v2/resource/Camera-Device-1/Camera",
 							"protocol": "http",
 							"host": [
 								"{{edgex-ip}}"
@@ -671,7 +671,7 @@
 								"api",
 								"v2",
 								"resource",
-								"Camera-LDR-Device-1",
+								"Camera-Device-1",
 								"Camera"
 							]
 						},
@@ -681,6 +681,198 @@
 				}
 			],
 			"description": "D. Kishan"
+		},
+		{
+			"name": "Device Virtual",
+			"item": [
+				{
+					"name": "create device profile Copy",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n    {\r\n        \"apiVersion\": \"v2\",\r\n        \"profile\": {\r\n            \"name\": \"Raspberry-pi-fusion\",\r\n            \"manufacturer\": \"Rpi\",\r\n            \"model\": \"4B\",\r\n            \"labels\": [\r\n                \"rpi-1\"\r\n            ],\r\n            \"description\": \"Raspberry pi device\",\r\n            \"deviceResources\": [\r\n                {\r\n                    \"name\": \"Camera\",\r\n                    \"description\": \"Counts people within vible area\",\r\n                    \"properties\": {\r\n                        \"valueType\": \"Int64\",\r\n                        \"readWrite\": \"RW\",\r\n                        \"defaultValue\": \"On\",\r\n                        \"units\": \"\"\r\n                    }\r\n                },\r\n                {\r\n                    \"name\": \"LDR\",\r\n                    \"description\": \"Measures intensity of life\",\r\n                    \"properties\": {\r\n                        \"valueType\": \"Int64\",\r\n                        \"readWrite\": \"RW\",\r\n                        \"defaultValue\": \"On\",\r\n                        \"units\": \"\"\r\n                    }\r\n                }\r\n            ]\r\n        }\r\n    }\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{edgex-ip}}:{{edgex-metadata}}/api/v2/deviceprofile",
+							"protocol": "http",
+							"host": [
+								"{{edgex-ip}}"
+							],
+							"port": "{{edgex-metadata}}",
+							"path": [
+								"api",
+								"v2",
+								"deviceprofile"
+							]
+						},
+						"description": "This request should create a device."
+					},
+					"response": []
+				},
+				{
+					"name": "get all device profiles Copy",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{edgex-ip}}:{{edgex-metadata}}/api/v2/deviceprofile/all",
+							"protocol": "http",
+							"host": [
+								"{{edgex-ip}}"
+							],
+							"port": "{{edgex-metadata}}",
+							"path": [
+								"api",
+								"v2",
+								"deviceprofile",
+								"all"
+							]
+						},
+						"description": "This request should create a device."
+					},
+					"response": []
+				},
+				{
+					"name": "create device Copy",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n    {\r\n        \"apiVersion\": \"v2\",\r\n        \"device\": {\r\n            \"name\": \"DV\",\r\n            \"description\": \"Device created with Raspberry-pi-fusion device profile\",\r\n            \"adminState\": \"UNLOCKED\",\r\n            \"operatingState\": \"UP\",\r\n            \"labels\": [\r\n                \"DV\"\r\n            ],\r\n            \"serviceName\": \"device-virtual\",\r\n            \"profileName\": \"Raspberry-pi-fusion\",\r\n            \"autoEvents\": [\r\n                {\r\n                    \"interval\": \"30s\",\r\n                    \"onChange\": false,\r\n                    \"sourceName\": \"Float32\"\r\n                },\r\n                {\r\n                    \"interval\": \"30s\",\r\n                    \"onChange\": false,\r\n                    \"sourceName\": \"Float64\"\r\n                }\r\n            ],\r\n            \"protocols\": {\r\n                \"other\": {\r\n                    \"Address\": \"device-virtual-float-01\",\r\n                    \"Protocol\": \"300\"\r\n                }\r\n            },\r\n             \"location\": \"Tokyo\"\r\n        }\r\n    }\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{edgex-ip}}:{{edgex-metadata}}/api/v2/device",
+							"protocol": "http",
+							"host": [
+								"{{edgex-ip}}"
+							],
+							"port": "{{edgex-metadata}}",
+							"path": [
+								"api",
+								"v2",
+								"device"
+							]
+						},
+						"description": "This request should create a device."
+					},
+					"response": []
+				},
+				{
+					"name": "get all devices Copy",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{edgex-ip}}:{{edgex-metadata}}/api/v2/device/all",
+							"protocol": "http",
+							"host": [
+								"{{edgex-ip}}"
+							],
+							"port": "{{edgex-metadata}}",
+							"path": [
+								"api",
+								"v2",
+								"device",
+								"all"
+							]
+						},
+						"description": "This request should create a device."
+					},
+					"response": []
+				},
+				{
+					"name": "send data Copy",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "1111",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{edgex-ip}}:{{edgex-device-virtual}}/api/v2/resource/Random-Integer-Device/Int8",
+							"protocol": "http",
+							"host": [
+								"{{edgex-ip}}"
+							],
+							"port": "{{edgex-device-virtual}}",
+							"path": [
+								"api",
+								"v2",
+								"resource",
+								"Random-Integer-Device",
+								"Int8"
+							]
+						},
+						"description": "### Url Format\nhttp://{{edgex-ip}}:{{edgex-device-rest}}/api/v2/resource/{{device-name}}/{{resource-name}}\n\n### Resource\nResource === Sensor"
+					},
+					"response": []
+				},
+				{
+					"name": "reading/device/name/{name} Copy",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{edgex-ip}}:{{edgex-core-data}}/api/v2/reading/device/name/DV",
+							"protocol": "http",
+							"host": [
+								"{{edgex-ip}}"
+							],
+							"port": "{{edgex-core-data}}",
+							"path": [
+								"api",
+								"v2",
+								"reading",
+								"device",
+								"name",
+								"DV"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ping",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{edgex-ip}}:{{edgex-device-virtual}}/api/v2/ping",
+							"protocol": "http",
+							"host": [
+								"{{edgex-ip}}"
+							],
+							"port": "{{edgex-device-virtual}}",
+							"path": [
+								"api",
+								"v2",
+								"ping"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Testing the whole process on device virtual\n\n##### Send data not working for device virtual"
 		}
 	],
 	"event": [
@@ -731,6 +923,10 @@
 		{
 			"key": "edgex-core-command",
 			"value": "59882"
+		},
+		{
+			"key": "edgex-device-virtual",
+			"value": "59900"
 		}
 	]
 }

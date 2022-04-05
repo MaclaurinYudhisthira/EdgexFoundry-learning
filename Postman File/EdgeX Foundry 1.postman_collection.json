@@ -1,0 +1,359 @@
+{
+	"info": {
+		"_postman_id": "a1969dd2-df46-483c-8f36-fd6f8846a17e",
+		"name": "EdgeX Foundry 1",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Consul",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{edgex-ip}}:8500/ui/dc1/services",
+					"protocol": "http",
+					"host": [
+						"{{edgex-ip}}"
+					],
+					"port": "8500",
+					"path": [
+						"ui",
+						"dc1",
+						"services"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create value descriptors",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"temperature\",\r\n    \"description\": \"Ambient temperature in Celsius\",\r\n    \"min\": \"-50\",\r\n    \"max\": \"100\",\r\n    \"type\": \"Int64\",\r\n    \"uomLabel\": \"temperature\",\r\n    \"defaultValue\": \"0\",\r\n    \"formatting\": \"%s\",\r\n    \"labels\": [\r\n        \"environment\",\r\n        \"temperature\"\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{edgex-ip}}:{{edgex-core-data-port}}/api/v1/valuedescriptor",
+					"protocol": "http",
+					"host": [
+						"{{edgex-ip}}"
+					],
+					"port": "{{edgex-core-data-port}}",
+					"path": [
+						"api",
+						"v1",
+						"valuedescriptor"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Upload the device profile",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Keep-Alive",
+						"value": "true",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "sensorClusterDeviceProfile.yaml"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://{{edgex-ip}}:{{edgex-core-metadata-port}}/api/v1/deviceprofile/uploadfile",
+					"protocol": "http",
+					"host": [
+						"{{edgex-ip}}"
+					],
+					"port": "{{edgex-core-metadata-port}}",
+					"path": [
+						"api",
+						"v1",
+						"deviceprofile",
+						"uploadfile"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create the device",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Temp_and_Humidity_sensor_cluster_01\",\r\n    \"description\": \"Raspberry Pi sensor cluster\",\r\n    \"adminState\": \"unlocked\",\r\n    \"operatingState\": \"enabled\",\r\n    \"protocols\": {\r\n        \"example\": {\r\n            \"host\": \"dummy\",\r\n            \"port\": \"1234\",\r\n            \"unitID\": \"1\"\r\n        }\r\n    },\r\n    \"labels\": [\r\n        \"Humidity sensor\",\r\n        \"Temperature sensor\",\r\n        \"DHT11\"\r\n    ],\r\n    \"location\": \"Tokyo\",\r\n    \"service\": {\r\n        \"name\": \"edgex-device-rest\"\r\n    },\r\n    \"profile\": {\r\n        \"name\": \"SensorCluster\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{edgex-ip}}:{{edgex-core-metadata-port}}/api/v1/device",
+					"protocol": "http",
+					"host": [
+						"{{edgex-ip}}"
+					],
+					"port": "{{edgex-core-metadata-port}}",
+					"path": [
+						"api",
+						"v1",
+						"device"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Event count",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{edgex-ip}}:{{edgex-device-rest-port}}/api/v1/event/count",
+					"protocol": "http",
+					"host": [
+						"{{edgex-ip}}"
+					],
+					"port": "{{edgex-device-rest-port}}",
+					"path": [
+						"api",
+						"v1",
+						"event",
+						"count"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Send data",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "77"
+				},
+				"url": {
+					"raw": "http://{{edgex-ip}}:{{edgex-device-rest-port}}/api/v1/resource/Temp_and_Humidity_sensor_cluster_01/temperature",
+					"protocol": "http",
+					"host": [
+						"{{edgex-ip}}"
+					],
+					"port": "{{edgex-device-rest-port}}",
+					"path": [
+						"api",
+						"v1",
+						"resource",
+						"Temp_and_Humidity_sensor_cluster_01",
+						"temperature"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Read data collected",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{edgex-ip}}:{{edgex-core-data-port}}/api/v1/reading",
+					"protocol": "http",
+					"host": [
+						"{{edgex-ip}}"
+					],
+					"port": "{{edgex-core-data-port}}",
+					"path": [
+						"api",
+						"v1",
+						"reading"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Issuing Commands",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{edgex-ip}}:{{edgex-core-command}}/api/v1/device",
+					"protocol": "http",
+					"host": [
+						"{{edgex-ip}}"
+					],
+					"port": "{{edgex-core-command}}",
+					"path": [
+						"api",
+						"v1",
+						"device"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://127.0.0.1:5000/post",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "25"
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/post",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"post"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Creating Kuiper Stream",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"sql\": \"create stream temp_threshold() WITH (FORMAT=\\\"JSON\\\", TYPE=\\\"edgex\\\")\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{edgex-ip}}:{{edgex-kuiper-port}}/streams",
+					"protocol": "http",
+					"host": [
+						"{{edgex-ip}}"
+					],
+					"port": "{{edgex-kuiper-port}}",
+					"path": [
+						"streams"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Creating Kuiper Rule",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": \"temp_rule\",\r\n    \"sql\": \"SELECT temperature FROM temp_threshold WHERE temperature > 70\",\r\n    \"actions\": [\r\n        {\r\n            \"rest\": {\r\n                \"url\": \"http://127.0.0.1:5000/\",\r\n                \"method\": \"post\",\r\n                \"retryInterval\": -1,\r\n                \"dataTemplate\": \"{70}\",\r\n                \"sendSingle\": true\r\n            }\r\n        },\r\n        {\r\n            \"log\": {}\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{edgex-ip}}:{{edgex-kuiper-port}}/rules",
+					"protocol": "http",
+					"host": [
+						"{{edgex-ip}}"
+					],
+					"port": "{{edgex-kuiper-port}}",
+					"path": [
+						"rules"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "edgex-ip",
+			"value": "localhost"
+		},
+		{
+			"key": "edgex-core-data-port",
+			"value": "48080"
+		},
+		{
+			"key": "edgex-core-metadata-port",
+			"value": "48081"
+		},
+		{
+			"key": "edgex-core-command",
+			"value": "48082"
+		},
+		{
+			"key": "edgex-device-rest-port",
+			"value": "49986"
+		},
+		{
+			"key": "edgex-kuiper-port",
+			"value": "48075"
+		}
+	]
+}
